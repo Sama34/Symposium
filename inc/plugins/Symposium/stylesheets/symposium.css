@@ -1,0 +1,157 @@
+/* Messages and conversation */
+#conversationContainer {
+	overflow: scroll;
+	padding: 15px 10px
+}
+
+.messageWrapper {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.messageWrapper.personal {
+    justify-content: flex-end;
+}
+
+.message {
+	position: relative;
+    box-sizing: border-box;
+    transition: box-shadow .1s ease-in-out;
+    border-radius: 6px;
+	padding: 15px;
+	max-width: 80%;
+	clear: both;
+	display: inline-block;
+}
+
+.external .message {
+	background: #fff;
+    color: #666;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.02), 0 5px 10px 0 rgba(0,0,0,.1)
+}
+
+.personal .message {
+	background: #333949;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08)
+}
+
+.external.group .message {
+	margin-left: 40px
+}
+
+.external.group .avatar ~ .message {
+	margin-left: 0
+}
+
+.messageWrapper.personal ~ .personal, .messageWrapper.external ~ .external {
+	margin-top: 5px
+}
+
+.messageWrapper input[type="checkbox"] {
+	margin-right: 12px
+}
+
+.messageWrapper .avatar {
+	align-self: flex-start;
+    margin-right: 10px;
+}
+
+.clear::before {
+    content: "";
+    display: table-cell
+}
+
+.clear::after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.message .date {
+	font-size: 12px;
+    line-height: 1.4;
+    color: #999;
+	margin-left: 16px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.message .date img {
+	margin-left: 5px
+}
+
+.avatar {
+	border-radius: 999em
+}
+
+/* Flex */
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.conversationTitle .avatar {
+	margin-right: 10px
+}
+
+/* Divider */
+.divider {
+	margin: 10px 0;
+	text-align: center
+}
+
+.divider > span {
+	display: inline-block;
+    padding: 5px 10px;
+    background: #333949;
+    line-height: 1;
+    font-size: 11px;
+    color: #fff;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-radius: 999em;
+    text-transform: none;
+    font-weight: 500;
+}
+
+/* Misc */
+.multipage {
+	display: inline-block;
+	float: right
+}
+
+.align_right {
+	float: right
+}
+
+#duplicateAlert {
+	margin-top: 10px
+}
+
+.truncate {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+    overflow: hidden
+}
+
+td.truncate {
+	max-width: 0
+}
+
+/* Messages highlight */
+.highlighted {
+	background: #fff
+}
+
+.highlighted.personal {
+	background: #333949
+}
+
+.highlighted .message {
+	box-shadow: none!important
+}

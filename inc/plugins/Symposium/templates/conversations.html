@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>{$lang->symposium_conversations}</title>
+		{$headerinclude}
+	</head>
+	<body>
+		{$header}
+		<table width="100%" border="0" align="center">
+			<tr>
+				{$usercpnav}
+				<td valign="top">
+					{$multipage}
+					<form action="private.php" method="get">
+						<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+						<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+							<tr>
+								<td class="trow1" style="text-align: center">
+									<input type="text" name="search" value="{$mybb->input['search']}" placeholder="{$lang->symposium_search_keyword}" class="textbox" size="50" />
+									<input type="submit" class="button" name="symposium" value="{$lang->symposium_search_go}" />
+								</td>
+							</tr>
+						</table>
+					</form>
+					<br>
+					<form action="private.php" method="post" name="pmForm">
+						<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+						<input type="hidden" name="action" value="delete_conversations" />
+						<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+							<tr>
+								<td class="thead" colspan="4">
+									<strong><a href="private.php?action=send" class="align_right">{$lang->symposium_new_conversation}</a> {$lang->symposium_conversations}</strong>
+								</td>
+							</tr>
+							<tr>
+								<td class="tcat" align="center" width="1%">
+									<input name="allbox" title="{$lang->check_all}" type="checkbox" class="checkbox checkall" value="{$lang->check_all}" />
+								</td>
+								<td class="tcat" align="left" colspan="2">
+									<span class="smalltext">
+										<strong>{$lang->symposium_conversation_title}</strong>
+									</span>
+								</td>
+								<td class="tcat" align="center"  width="20%">
+									<span class="smalltext">
+										<strong>{$lang->symposium_conversation_last_message}</strong>
+									</span>
+								</td>
+							</tr>
+							{$conversations}
+						</table>
+						<br>
+						<div style="text-align: center">
+							<input type="submit" class="button" name="delete" value="{$lang->symposium_conversation_delete}" />
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+		{$footer}
+	</body>
+</html>

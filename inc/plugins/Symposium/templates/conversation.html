@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>{$user['username']}</title>
+		{$headerinclude}
+		<script type="text/javascript" src="{$mybb->asset_url}/jscripts/symposium.js?v=0.3"></script>
+		<script type="text/javascript" src="{$mybb->asset_url}/jscripts/symposium.js?v=0.3"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function() {
+
+				Symposium.convid = '{$convid}';
+				Symposium.lang = {
+					responseMalformed: '{$lang->symposium_response_malformed}',
+					deleteConfirmation: '{$lang->symposium_delete_confirmation}',
+				};
+				Symposium.numberOfMessages = Number('{$total}');
+				Symposium.init();
+
+				$('#conversationOptions').popupMenu();
+
+			});
+
+		</script>
+	</head>
+	<body>
+		{$header}
+		<table width="100%" border="0" align="center">
+			<tr>
+				{$usercpnav}
+				<td style="vertical-align: top;">
+					<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder tfixed clear">
+						<tr>
+							<td class="thead">
+								{$lang->symposium_conversation}
+							</td>
+						</tr>
+						<tr>
+							<td class="trow2 conversationTitle flex">
+								<div class="flex">
+									<img src="{$convoAvatar}" width="50" height="50" class="avatar" />
+									<div>
+										<b>{$convoTitle}</b>
+										<div>{$participants}</div>
+									</div>
+								</div>
+								<div>
+									{$multipage}
+									<a class="button" id="conversationOptions" href="#">{$lang->symposium_conversation_options}</a>
+									<div id="conversationOptions_popup" class="popup_menu" style="display: none;">
+										<div class="popup_item_container"><a href="javascript:void(0)" class="popup_item toggleDeleteMessages">{$lang->symposium_conversation_options_delete_messages}</a></div>
+										<div class="popup_item_container"><a href="private.php?action=delete_conversations&my_post_key={$mybb->post_code}&toDelete[{$convid}]=1" class="popup_item">{$lang->symposium_conversation_options_delete_conversation}</a></div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="trow1">
+								<div id="conversationContainer">
+									{$messages}
+								</div>
+								<div class="delete hidden pm_alert">
+									<a href="javascript:void(0)" class="deleteMessages button">Delete messages</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+					{$postingArea}
+				</td>
+			</tr>
+		</table>
+		{$footer}
+	</body>
+</html>

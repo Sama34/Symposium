@@ -1,0 +1,13 @@
+{$divider}
+<div id="pm-{$message['pmid']}" class="clear messageWrapper personal">
+	<input type="checkbox" class="checkbox delete hidden" name="toDelete[{$message['pmid']}]" data-message-id="{$message['pmid']}" />
+	<div class="message">
+		<div class="body">
+			{$message['message']}
+			<span class="date">
+			    {$time}
+			    {$lastRead}
+            </span>
+		</div>
+	</div>
+</div>

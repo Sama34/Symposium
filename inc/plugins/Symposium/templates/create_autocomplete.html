@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="{$mybb->asset_url}/jscripts/select2/select2.css?ver=1824">
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/select2/select2.min.js?ver=1824"></script>
+<script type="text/javascript">
+<!--
+if(use_xmlhttprequest == "1")
+{
+	MyBB.select2();
+	$("#to").select2({
+		placeholder: "{$lang->search_user}",
+		minimumInputLength: 2,
+		multiple: {$groupConversationsAllowed},
+		maximumSelectionSize: {$maxParticipantsPerGroup},
+		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+			url: "xmlhttp.php?action=get_users",
+			dataType: 'json',
+			data: function (term, page) {
+				return {
+					query: term, // search term
+				};
+			},
+			results: function (data, page) { // parse the results into the format expected by Select2.
+				// since we are using custom formatting functions we do not need to alter remote JSON data
+				return {results: data};
+			}
+		},
+		initSelection: function(element, callback) {
+			var query = $(element).val().replace(', ', ',');
+			if (query !== "") {
+				var newqueries = [];
+				exp_queries = query.split(",");
+				$.each(exp_queries, function(index, value ){
+					if(value.replace(/\s/g, '') != "")
+					{
+						var newquery = {
+							id: value.replace(/,\s?/g, ", "),
+							text: value.replace(/,\s?/g, ", ")
+						};
+						newqueries.push(newquery);
+					}
+				});
+				callback(newqueries);
+			}
+		}
+	});
+	$('#to').on('change', function(e) {
+
+		if (e.added) {
+
+			var el = $(this);
+
+			if (e.added.convid) {
+
+				if (!$('#duplicateAlert').length) {
+					el.after($('<div id="duplicateAlert" class="pm_alert">{$lang->symposium_conversation_already_part1}' + e.added.text + '{$lang->symposium_conversation_already_part2}</div>'));
+				}
+				else {
+					$('#duplicateAlert .name').text(e.added.text);
+				}
+
+			}
+			else {
+				el.next('#duplicateAlert').remove();
+			}
+
+		}
+
+		// Show title field
+		if (e.val) {
+
+			if (e.val.length >= 2) {
+				$('#duplicateAlert').remove();
+				$('.conversationTitle').removeAttr('hidden').removeClass('hidden');
+			}
+			else {
+				$('.conversationTitle').attr('hidden', 'true').addClass('hidden');
+			}
+
+		}
+
+	});
+}
+// -->
+</script>

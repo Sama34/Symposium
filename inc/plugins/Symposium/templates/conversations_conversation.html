@@ -1,0 +1,13 @@
+<tr>
+	<td class="trow1{$highlight}" width="1"><input type="checkbox" class="checkbox" name="toDelete[{$conversation['convid']}]" value="1" /></td>
+	<td class="trow1{$highlight}" width="1">
+		<a href="#" title="{$currentUsers[0]['username']}">
+			<img src="{$convoAvatar}" class="avatar" width="30" height="30" />
+		</a>
+	</td>
+	<td class="trow1{$highlight} truncate">
+		<a href="private.php?action=read&amp;convid={$conversation['convid']}">{$convoTitle}{$unreadCount}</a>
+		<div class="preview truncate">{$lastRead}{$groupConversationSender}{$conversation['lastmessage']}</div>
+	</td>
+	<td class="trow1{$highlight}" align="center">{$date}</td>
+</tr>

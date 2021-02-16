@@ -1,0 +1,14 @@
+{$divider}
+<div id="pm-{$message['pmid']}" class="messageWrapper external group">
+	<input type="checkbox" class="checkbox delete hidden" name="toDelete[{$message['pmid']}]" data-message-id="{$message['pmid']}" />
+	{$avatar}
+	<div class="message">
+		<div class="sender">
+			{$sender}
+		</div>
+		<div class="body">
+			{$message['message']}
+			<span class="date">{$time}</span>
+		</div>
+	</div>
+</div>

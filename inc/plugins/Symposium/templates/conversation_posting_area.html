@@ -1,0 +1,23 @@
+<br />
+{$errors}
+<form action="private.php" method="post" name="input">
+	<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+	<input type="hidden" name="to" value="{$replyUsernames}" />
+	<input type="hidden" name="subject" value="Conversation with {$user['username']}" />
+	<input type="hidden" name="action" value="new_message" />
+	<input type="hidden" name="do" value="reply" />
+	<input type="hidden" name="convid" value="{$convid}" />
+	<input type="hidden" name="pmid" value="{$last['pmid']}" />
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder tfixed clear">
+		<tr>
+			<td class="trow2" align="center">
+				{$codebuttons}
+				<textarea class="textarea" rows="10" cols="80" name="message" id="message" tabindex="1">{$message}</textarea>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<div style="text-align: center">
+		<input type="submit" class="button" value="{$lang->send_message}" tabindex="2" accesskey="s" />
+	</div>
+</form>
