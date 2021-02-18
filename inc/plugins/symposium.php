@@ -1777,7 +1777,7 @@ function update_conversations_meta(array $convids = [], int $uid)
 
                 // We don't need to sanitize things as they are directly obtained from the db
                 $db->update_query('symposium_conversations', [
-                    'lastmessage' => $lastPm['message'],
+                    'lastmessage' => $db->escape_string($lastPm['message']), // avoid possible SQL errors
                     'lastpmid' => $lastPm['lastpmid'],
                     'lastuid' => $lastPm['fromid'],
                     'lastdateline' => $lastPm['dateline'],
